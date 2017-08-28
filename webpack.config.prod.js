@@ -48,8 +48,7 @@ export default {
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
-      noInfo: true,
-      minimize: true
+      noInfo: true
     })
   ],
   module: {

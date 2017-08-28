@@ -10,12 +10,12 @@ const port = 1337;
 const app = express();
 const bundler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
+app.use(require('webpack-dev-middleware')(bundler, {
   noInfo: true,
   publicPath: config.output.publicPath
 }));
 
-app.use(require("webpack-hot-middleware")(compiler));
+app.use(require("webpack-hot-middleware")(bundler));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
