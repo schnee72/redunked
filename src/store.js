@@ -7,29 +7,25 @@ import rootReducer from './reducers';
 export const history = createHistory();
 
 const initialState = {};
-const enhancers = [];
+
 const middlewares = [
   thunk,
   routerMiddleware(history)
 ];
 
 if (process.env.NODE_ENV === 'development') {
-  const devToolsExtension = window.devToolsExtension;
-
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension());
-  }
+  const createLogger = require('redux-logger').createLogger;
+  middlewares.push(createLogger({ collapsed: true, diff: true }));
 }
 
-const composedEnhancers = compose(
-  applyMiddleware(...middlewares),
-  ...enhancers
+const composed = compose(
+  applyMiddleware(...middlewares)
 );
 
 const store = createStore(
   rootReducer,
   initialState,
-  composedEnhancers
+  composed
 );
 
 export default store;

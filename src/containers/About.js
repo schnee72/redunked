@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => (
   <div>
     <h1>About</h1>
-    <p>React Redux Router Thunk</p>
+    <p>React Router Redux Thunk</p>
   </div>
 );
 

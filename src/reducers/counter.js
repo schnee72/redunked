@@ -1,5 +1,4 @@
-export const INCREMENT = 'counter/INCREMENT';
-export const INCREMENT_REQUESTED = 'counter/INCREMENT_REQUESTED';
+import { INCREMENT, INCREMENT_REQUESTED } from '../constants/actionTypes';
 
 const initialState = {
   count: 0,
@@ -16,7 +15,7 @@ export default (state = initialState, action) => {
     case INCREMENT:
       return {
         ...state,
-        count: state.count +1,
+        count: state.count + 1,
         isIncrementing: !state.isIncrementing
       };
     default:
@@ -24,13 +23,3 @@ export default (state = initialState, action) => {
   }
 };
 
-export const increment = () => {
-  return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED
-    });
-    dispatch({
-      type: INCREMENT
-    });
-  };
-};
