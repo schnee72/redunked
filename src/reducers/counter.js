@@ -1,9 +1,5 @@
 import { INCREMENT, INCREMENT_REQUESTED } from '../constants/actionTypes';
-
-const initialState = {
-  count: 0,
-  isIncrementing: false
-};
+import initialState from './initialCounterState';
 
 export default (state = initialState, action) => {
   switch (action.type) {
