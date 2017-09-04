@@ -4,11 +4,13 @@ import path from 'path';
 import open from 'open';
 import compression from 'compression';
 import chalk from 'chalk';
+import historyApiFallback from 'connect-history-api-fallback';
 
-const port = 7331;
+const port = process.env.PORT || 7331;
 const app = express();
 
 app.use(compression());
+app.use(historyApiFallback());
 app.use(express.static('dist'));
 
 app.get('/', (req, res) => {

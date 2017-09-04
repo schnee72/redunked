@@ -3,10 +3,11 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers';
+import { loadState } from './utils/localStorage';
 
 export const history = createHistory();
 
-const initialState = {};
+const initialState = loadState() || {};
 
 const middlewares = [
   thunk,
